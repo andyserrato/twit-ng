@@ -1,0 +1,25 @@
+<form class="ui form error" [formGroup]='form' (ngSubmit)='OnSubmit(form.value)'>
+    <div class="field">
+        <label>User Name</label>
+        <input formControlName="username" placeholder="User Name" type="text">
+        <!--<div *ngIf='username.dirty && username.invalid' class="ui error message">
+            <p>Username is required</p>
+        </div>-->
+        <div *ngIf='form.controls.username.invalid && form.controls.username.dirty' class="ui error message">
+            <p>Username is required</p>
+        </div>
+    </div>
+    <div class="field">
+        <label>Password</label>
+        <input formControlName="password" type="password" placeholder="Password">
+    </div>
+    <!--<div class="field">
+        <div class="ui checkbox" ngModelGroup='options'> -->
+    <input formControlName="rememberme" tabindex="0" type="checkbox">
+    <label>Remember Me</label>
+    <!--</div>
+    </div> -->
+    <button class="ui button primary" type="submit">Submit</button>
+</form>
+
+{{ form.value | json }}
